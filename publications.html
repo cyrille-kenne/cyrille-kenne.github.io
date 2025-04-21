@@ -34,9 +34,10 @@
       color: #00cec9;
     }
     .main-content {
-      max-width: 1000px;
+      /* fluid width: min 300px, max 1200px, scales with viewport */
+      width: clamp(300px, 90vw, 1200px);
       margin: 40px auto;
-      padding: 20px;
+      padding: clamp(1rem, 2vw, 2rem);
       background-color: white;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
       border-radius: 12px;
@@ -230,4 +231,3 @@
   </footer>
 </body>
 </html>
-
