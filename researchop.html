@@ -1,92 +1,124 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Research Opportunities</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        nav {
-            text-align: right;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-        nav a:hover {
-            color: #00b894;
-        }
-        .main-content {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: relative;
-            width: 100%;
-            bottom: 0;
-        
-        }
-    </style>
-    <!-- If you want to use external CSS, ensure it is correctly linked -->
-    <!-- <link rel="stylesheet" href="style.css"> -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Research Opportunities</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #2c3e50;
+    }
+
+    header {
+      background-color: #1e272e;
+      color: white;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+
+    nav a {
+      color: white;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    nav a:hover {
+      color: #00cec9;
+    }
+
+    .main-content {
+      width: clamp(300px, 90vw, 1200px);
+      margin: 40px auto;
+      padding: clamp(1rem, 2vw, 2rem);
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 8px;
+    }
+
+    .opportunities-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .opportunities-list li {
+      margin-bottom: 30px;
+    }
+
+    .opportunities-list a {
+      color: #27ae60;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .opportunities-list a:hover {
+      text-decoration: underline;
+    }
+
+    .opportunities-list p {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    footer {
+      background-color: #1e272e;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 60px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Research Opportunities</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="publications.html">Publications</a>
-            <a href="teachings.html">Teachings</a>
-            <a href="researchop.html">Research Opportunities</a>
-            <a href="administration.html">Administration</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Research Opportunities</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="teachings.html">Teachings</a>
+      <a href="researchop.html">Research Opportunities</a>
+      <a href="administration.html">Administration</a>
+    </nav>
+  </header>
 
-    <section class="main-content">
-        <h2>Research Opportunities</h2>
-        <ul class="opportunities-list">
-            <li>
-            <a href="https://www.mathjobs.org/jobs/list/26521" target="_blank">
-               Postdoctoral research fellow in mathematical modelling and control theory in sustainable fisheries management
-            </a> 
-               <p> We are seeking a highly motivated and skilled postdoctoral researcher to join an interdisciplinary project focused on developing mathematical models and control theory tools to support sustainable fisheries management. The project will optimize fishing practices to reduce ecological impacts, providing actionable insights to inform policy decisions that balance economic performance with environmental conservation. For more informations, please refer to <a href="https://www.mathjobs.org/jobs/list/26521" target="_blank">
+  <section class="main-content">
+    <h2>Available Positions</h2>
+    <ul class="opportunities-list">
+      <li>
+        <a href="https://www.mathjobs.org/jobs/list/26521" target="_blank">
+          Postdoctoral research fellow in mathematical modelling and control theory in sustainable fisheries management
+        </a>
+        <p>
+          We are seeking a highly motivated and skilled postdoctoral researcher to join an interdisciplinary project focused on developing mathematical models and control theory tools to support sustainable fisheries management. The project aims to optimize fishing practices and reduce ecological impacts while supporting informed policymaking.
+        </p>
+        <p>
+          More info: <a href="https://www.mathjobs.org/jobs/list/26521" target="_blank">https://www.mathjobs.org/jobs/list/26521</a>
+        </p>
+      </li>
+    </ul>
+  </section>
 
-                <strong>https://www.mathjobs.org/jobs/list/26521</strong>
-                   </p>
-            </a> 
-            </li>
-        </ul>
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Cyrille Kenne. All rights reserved.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 Cyrille Kenne. All rights reserved.</p>
+  </footer>
 </body>
 </html>
