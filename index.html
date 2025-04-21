@@ -6,9 +6,8 @@
   <title>Cyrille Kenne</title>
   <meta name="description" content="Cyrille Kenne - Assistant Professor, University of British Columbia" />
   <meta name="keywords" content="Cyrille Kenne, Mathematics, Mathematical Biology, UBC" />
-
+  
   <style>
-    /* Reset some default margins */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -53,38 +52,42 @@
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
-      padding: 3vw 5vw;
-      max-width: 1600px;
+      padding: 40px 0;
+      max-width: 1200px;
       margin: 0 auto;
       background: white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.08);
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
     }
 
+    /* Bio section */
     .bio {
-      flex: 1 1 48%;
-      margin-right: 2%;
+      flex: 1;
+      padding-right: 20px;
     }
 
     .bio p {
       margin-bottom: 1.5em;
     }
 
+    /* Research Highlights section */
     .research-highlights {
-      flex: 1 1 48%;
+      flex: 1;
     }
 
     .research-highlights h2 {
-      color: #222;
-      font-size: 1.8rem;
-      margin-bottom: 15px;
+      color: #333;
+      font-size: 2rem;
+      margin-bottom: 20px;
       border-bottom: 2px solid #00b894;
       padding-bottom: 6px;
     }
 
     .gallery {
       display: flex;
-      flex-wrap: wrap;
       gap: 20px;
+      overflow: hidden;
+      width: 100%;
     }
 
     .gallery-item {
@@ -93,35 +96,51 @@
       border-radius: 8px;
       overflow: hidden;
       text-align: center;
+      background-color: #fff;
+      transition: transform 0.3s ease;
     }
 
     .gallery-item img {
       width: 100%;
-      height: auto;
+      height: 250px;
       object-fit: cover;
-      max-height: 400px;
+      border-bottom: 2px solid #ddd;
     }
 
     .gallery-item p {
       padding: 10px;
-      background-color: #fff;
       font-size: 1rem;
+      color: #555;
     }
 
-    a {
-      color: #0077cc;
-      text-decoration: none;
+    /* Gallery slider controls */
+    .gallery-controls {
+      display: flex;
+      justify-content: center;
+      margin-top: 20px;
     }
 
-    a:hover {
-      text-decoration: underline;
+    .control-btn {
+      background-color: #333;
+      color: white;
+      padding: 10px 20px;
+      margin: 0 10px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
     }
 
+    .control-btn:hover {
+      background-color: #00b894;
+    }
+
+    /* Contact section */
     #contact {
-      padding: 3vw 5vw;
+      padding: 40px 0;
       background: #fff;
       margin: 30px auto;
-      max-width: 1600px;
+      max-width: 1200px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
@@ -142,20 +161,20 @@
     @media (max-width: 900px) {
       .main-content {
         flex-direction: column;
-        padding: 2rem;
+        padding: 20px;
       }
 
       .bio, .research-highlights {
         flex: 1 1 100%;
-        margin-right: 0;
+        margin-bottom: 30px;
       }
 
       .gallery-item {
         flex: 1 1 100%;
       }
 
-      .research-highlights img {
-        max-height: 300px;
+      .gallery-item img {
+        height: 200px;
       }
     }
   </style>
@@ -201,6 +220,11 @@
           <p>Multi-scale visualization of infection wave propagation.</p>
         </div>
       </div>
+
+      <div class="gallery-controls">
+        <button class="control-btn" id="prevBtn">Previous</button>
+        <button class="control-btn" id="nextBtn">Next</button>
+      </div>
     </div>
   </section>
 
@@ -216,21 +240,31 @@
     </p>
   </section>
 
-  <div id="footer-placeholder"></div>
+  <footer>
+    <p>&copy; 2025 Cyrille Kenne. All rights reserved.</p>
+  </footer>
 
   <script>
-    fetch("footer.html")
-      .then(res => res.text())
-      .then(data => {
-        document.getElementById("footer-placeholder").innerHTML = data;
+    // Simple image slider functionality
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.gallery-item');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.style.transform = `translateX(-${index * 100}%)`;
       });
-
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const current = html.getAttribute("data-theme");
-      html.setAttribute("data-theme", current === "light" ? "dark" : "light");
     }
-  </script>
 
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      showSlide(currentIndex);
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      showSlide(currentIndex);
+    });
+  </script>
 </body>
 </html>
