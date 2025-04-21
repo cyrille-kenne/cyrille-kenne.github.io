@@ -6,8 +6,9 @@
   <title>Cyrille Kenne</title>
   <meta name="description" content="Cyrille Kenne - Assistant Professor, University of British Columbia" />
   <meta name="keywords" content="Cyrille Kenne, Mathematics, Mathematical Biology, UBC" />
-  
+
   <style>
+    /* Reset some default margins */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -51,96 +52,57 @@
     .main-content {
       display: flex;
       flex-wrap: wrap;
-      justify-content: space-between;
-      padding: 40px 0;
-      max-width: 1200px;
+      padding: 3vw 5vw;
+      max-width: 1600px;
       margin: 0 auto;
       background: white;
-      box-shadow: 0 0 15px rgba(0,0,0,0.1);
-      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.08);
     }
 
-    /* Bio section */
+    .photo {
+      flex: 1 1 350px;
+      margin-right: 40px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .photo img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
     .bio {
-      flex: 1;
-      padding-right: 20px;
+      flex: 2 1 600px;
     }
 
     .bio p {
       margin-bottom: 1.5em;
     }
 
-    /* Research Highlights section */
-    .research-highlights {
-      flex: 1;
-    }
-
-    .research-highlights h2 {
-      color: #333;
-      font-size: 2rem;
-      margin-bottom: 20px;
+    h2 {
+      color: #222;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
       border-bottom: 2px solid #00b894;
       padding-bottom: 6px;
     }
 
-    .gallery {
-      display: flex;
-      gap: 20px;
-      overflow: hidden;
-      width: 100%;
+    a {
+      color: #0077cc;
+      text-decoration: none;
     }
 
-    .gallery-item {
-      flex: 1 1 30%;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      border-radius: 8px;
-      overflow: hidden;
-      text-align: center;
-      background-color: #fff;
-      transition: transform 0.3s ease;
+    a:hover {
+      text-decoration: underline;
     }
 
-    .gallery-item img {
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-      border-bottom: 2px solid #ddd;
-    }
-
-    .gallery-item p {
-      padding: 10px;
-      font-size: 1rem;
-      color: #555;
-    }
-
-    /* Gallery slider controls */
-    .gallery-controls {
-      display: flex;
-      justify-content: center;
-      margin-top: 20px;
-    }
-
-    .control-btn {
-      background-color: #333;
-      color: white;
-      padding: 10px 20px;
-      margin: 0 10px;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      border-radius: 5px;
-    }
-
-    .control-btn:hover {
-      background-color: #00b894;
-    }
-
-    /* Contact section */
     #contact {
-      padding: 40px 0;
+      padding: 3vw 5vw;
       background: #fff;
       margin: 30px auto;
-      max-width: 1200px;
+      max-width: 1600px;
       box-shadow: 0 0 10px rgba(0,0,0,0.05);
     }
 
@@ -157,26 +119,63 @@
       margin: 0 10px;
     }
 
+    /* Gallery sliding effect */
+    .gallery {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      flex: 0 0 100%;
+      text-align: center;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .gallery p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #555;
+      text-align: center;
+    }
+
+    /* Add previous and next buttons */
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1.5em;
+    }
+
+    .carousel-button.prev {
+      left: 0;
+    }
+
+    .carousel-button.next {
+      right: 0;
+    }
+
     /* Responsive adjustments */
-    @media (max-width: 900px) {
-      .main-content {
-        flex-direction: column;
-        padding: 20px;
-      }
-
-      .bio, .research-highlights {
-        flex: 1 1 100%;
-        margin-bottom: 30px;
-      }
-
-      .gallery-item {
-        flex: 1 1 100%;
-      }
-
-      .gallery-item img {
-        height: 200px;
+    @media (max-width: 600px) {
+      .gallery p {
+        font-size: 1rem;
       }
     }
+
   </style>
 </head>
 
@@ -194,6 +193,9 @@
   </header>
 
   <section class="main-content">
+    <!-- <div class="photo">
+      <img src="images/cyrille.jpg" alt="Photo of Cyrille Kenne" />
+    </div> -->
     <div class="bio">
       <p>I am currently an Assistant Professor in the <a href="https://www.math.ubc.ca" target="_blank">Mathematics Department</a> at the University of British Columbia and a faculty member at the <a href="https://www.iam.ubc.ca" target="_blank">Institute of Applied Mathematics</a>.</p>
 
@@ -203,34 +205,29 @@
 
       <p>Interested in pursuing a Master's or PhD at UBC? <a href="https://www.math.ubc.ca/graduate/prospective-students/admissions" target="_blank">Apply here</a> and feel free to contact me with your CV and research interests.</p>
     </div>
+  </section>
 
-    <div class="research-highlights">
-      <h2>Research Highlights</h2>
-      <div class="gallery">
-        <div class="gallery-item">
-          <img src="images/experiment1.png" alt="Experiment 1" />
-          <p>Stability of steady states in a pathogen-host PDE model.</p>
-        </div>
-        <div class="gallery-item">
-          <img src="images/experiment2.png" alt="Experiment 2" />
-          <p>Numerical simulation of disease spread under optimal control.</p>
-        </div>
-        <div class="gallery-item">
-          <img src="images/experiment3.png" alt="Experiment 3" />
-          <p>Multi-scale visualization of infection wave propagation.</p>
-        </div>
+  <section class="main-content">
+    <h2>Research Highlights</h2>
+    <div class="gallery">
+      <div class="gallery-item">
+        <img src="images/experiment1.png" alt="Experiment 1" />
+        <p>Stability of steady states in a pathogen-host PDE model.</p>
       </div>
-
-      <div class="gallery-controls">
-        <button class="control-btn" id="prevBtn">Previous</button>
-        <button class="control-btn" id="nextBtn">Next</button>
+      <div class="gallery-item">
+        <img src="images/experiment2.png" alt="Experiment 2" />
+        <p>Numerical simulation of disease spread under optimal control.</p>
+      </div>
+      <div class="gallery-item">
+        <img src="images/experiment3.png" alt="Experiment 3" />
+        <p>Multi-scale visualization of infection wave propagation.</p>
       </div>
     </div>
   </section>
 
   <section id="contact">
     <h2>Contact Information</h2>
-    <p>Email: kenne at math dot ubc dot ca </p>
+    <p>Email:kenne at math dot ubc dot ca </p>
     <p>
       Department of Mathematics<br>
       University of British Columbia<br>
@@ -240,31 +237,55 @@
     </p>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Cyrille Kenne. All rights reserved.</p>
-  </footer>
+  <div id="footer-placeholder"></div>
 
   <script>
-    // Simple image slider functionality
-    let currentIndex = 0;
-    const slides = document.querySelectorAll('.gallery-item');
-    const totalSlides = slides.length;
-
-    function showSlide(index) {
-      slides.forEach((slide, i) => {
-        slide.style.transform = `translateX(-${index * 100}%)`;
+    fetch("footer.html")
+      .then(res => res.text())
+      .then(data => {
+        document.getElementById("footer-placeholder").innerHTML = data;
       });
-    }
 
-    document.getElementById('nextBtn').addEventListener('click', () => {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      showSlide(currentIndex);
-    });
+    // JavaScript for sliding effect
+    document.addEventListener('DOMContentLoaded', function() {
+      let currentIndex = 0;
+      const items = document.querySelectorAll('.gallery-item');
+      const totalItems = items.length;
 
-    document.getElementById('prevBtn').addEventListener('click', () => {
-      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      function showSlide(index) {
+        items.forEach(item => {
+          item.style.transform = `translateX(-${index * 100}%)`;
+        });
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        showSlide(currentIndex);
+      }
+
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        showSlide(currentIndex);
+      }
+
+      setInterval(nextSlide, 3000);
+
+      const nextButton = document.createElement('button');
+      nextButton.classList.add('carousel-button', 'next');
+      nextButton.innerText = '>';
+      nextButton.addEventListener('click', nextSlide);
+
+      const prevButton = document.createElement('button');
+      prevButton.classList.add('carousel-button', 'prev');
+      prevButton.innerText = '<';
+      prevButton.addEventListener('click', prevSlide);
+
+      document.querySelector('.gallery').appendChild(prevButton);
+      document.querySelector('.gallery').appendChild(nextButton);
+
       showSlide(currentIndex);
     });
   </script>
+
 </body>
 </html>
