@@ -119,41 +119,63 @@
       margin: 0 10px;
     }
 
+    /* Gallery sliding effect */
+    .gallery {
+      display: flex;
+      overflow: hidden;
+      position: relative;
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .gallery-item {
+      flex: 0 0 100%;
+      text-align: center;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .gallery p {
+      font-size: 1.2em;
+      margin-top: 10px;
+      color: #555;
+      text-align: center;
+    }
+
+    /* Add previous and next buttons */
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 1.5em;
+    }
+
+    .carousel-button.prev {
+      left: 0;
+    }
+
+    .carousel-button.next {
+      right: 0;
+    }
+
     /* Responsive adjustments */
-    @media (max-width: 1200px) {
-      .main-content {
-        flex-direction: column;
-      }
-
-      .photo {
-        margin: 0 auto 30px;
-      }
-    }
-
     @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        text-align: center;
-      }
-
-      nav {
-        margin-top: 10px;
-      }
-
-      nav a {
-        display: block;
-        margin: 5px 0;
-      }
-
-      .main-content,
-      #contact {
-        padding: 20px;
-      }
-
-      h2 {
-        font-size: 1.5rem;
+      .gallery p {
+        font-size: 1rem;
       }
     }
+
   </style>
 </head>
 
@@ -171,9 +193,9 @@
   </header>
 
   <section class="main-content">
- <!-- <div class="photo">
-  <img src="images/cyrille.jpg" alt="Photo of Cyrille Kenne" />
-</div> -->
+    <!-- <div class="photo">
+      <img src="images/cyrille.jpg" alt="Photo of Cyrille Kenne" />
+    </div> -->
     <div class="bio">
       <p>I am currently an Assistant Professor in the <a href="https://www.math.ubc.ca" target="_blank">Mathematics Department</a> at the University of British Columbia and a faculty member at the <a href="https://www.iam.ubc.ca" target="_blank">Institute of Applied Mathematics</a>.</p>
 
@@ -185,7 +207,7 @@
     </div>
   </section>
 
-<section class="main-content">
+  <section class="main-content">
     <h2>Research Highlights</h2>
     <div class="gallery">
       <div class="gallery-item">
@@ -203,8 +225,6 @@
     </div>
   </section>
 
-
-  
   <section id="contact">
     <h2>Contact Information</h2>
     <p>Email:kenne at math dot ubc dot ca </p>
@@ -217,7 +237,7 @@
     </p>
   </section>
 
- <div id="footer-placeholder"></div>
+  <div id="footer-placeholder"></div>
 
   <script>
     fetch("footer.html")
@@ -226,13 +246,46 @@
         document.getElementById("footer-placeholder").innerHTML = data;
       });
 
-    function toggleDarkMode() {
-      const html = document.documentElement;
-      const current = html.getAttribute("data-theme");
-      html.setAttribute("data-theme", current === "light" ? "dark" : "light");
-    }
-  </script>
+    // JavaScript for sliding effect
+    document.addEventListener('DOMContentLoaded', function() {
+      let currentIndex = 0;
+      const items = document.querySelectorAll('.gallery-item');
+      const totalItems = items.length;
 
+      function showSlide(index) {
+        items.forEach(item => {
+          item.style.transform = `translateX(-${index * 100}%)`;
+        });
+      }
+
+      function nextSlide() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        showSlide(currentIndex);
+      }
+
+      function prevSlide() {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        showSlide(currentIndex);
+      }
+
+      setInterval(nextSlide, 3000);
+
+      const nextButton = document.createElement('button');
+      nextButton.classList.add('carousel-button', 'next');
+      nextButton.innerText = '>';
+      nextButton.addEventListener('click', nextSlide);
+
+      const prevButton = document.createElement('button');
+      prevButton.classList.add('carousel-button', 'prev');
+      prevButton.innerText = '<';
+      prevButton.addEventListener('click', prevSlide);
+
+      document.querySelector('.gallery').appendChild(prevButton);
+      document.querySelector('.gallery').appendChild(nextButton);
+
+      showSlide(currentIndex);
+    });
+  </script>
 
 </body>
 </html>
