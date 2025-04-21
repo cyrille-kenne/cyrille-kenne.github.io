@@ -1,179 +1,78 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Publications</title>
+  <meta charset="UTF-8">
+  <title>My Publications</title>
   <style>
-    :root {
-      --bg: #121212;
-      --text: #e0e0e0;
-      --accent: #00b894;
-      --link: #74b9ff;
-    }
     body {
-      margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      transition: background .3s, color .3s;
+      margin: 2rem;
     }
-    header {
-      background: #1e1e1e;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border-bottom: 1px solid #333;
+    h2, h3 {
+      color: #2c3e50;
     }
-    header h1 {
-      margin: 0;
-      color: var(--accent);
-      font-size: 1.8rem;
+    ul {
+      list-style-type: none;
+      padding: 0;
     }
-    nav a {
-      color: var(--text);
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: 500;
+    li {
+      margin-bottom: 1rem;
     }
-    nav a:hover {
-      color: var(--accent);
-    }
-    main {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      color: var(--accent);
-      margin-top: 2.5rem;
-      margin-bottom: .5rem;
-      font-size: 1.5rem;
-    }
-    ul { list-style: none; padding: 0; }
-    li { margin-bottom: .75rem; }
-    a.pub-link {
-      color: var(--link);
-      text-decoration: none;
-    }
-    a.pub-link:hover { text-decoration: underline; }
-    a.extra {
-      margin-left: .5rem;
-      font-size: .9rem;
-      color: var(--accent);
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: #1e1e1e;
-      color: #888;
-      font-size: .9rem;
-      border-top: 1px solid #333;
+    .year {
       margin-top: 2rem;
     }
+    a {
+      text-decoration: none;
+      color: #2980b9;
+    }
   </style>
-
-  <!-- BibTeX parser library -->
-  <script src="https://cdn.jsdelivr.net/npm/bibtex-parse-js@2.0.2/dist/bibtexParse.min.js"></script>
 </head>
 <body>
+  <h2>Publications</h2>
+  <div id="publications-container"></div>
 
-  <header>
-    <h1>Publications</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="publications.html">Publications</a>
-      <a href="teachings.html">Teachings</a>
-      <a href="researchop.html">Opportunities</a>
-      <a href="administration.html">Admin</a>
-    </nav>
-  </header>
+  <script type="module">
+    import bibtexParse from 'https://cdn.jsdelivr.net/npm/bibtex-parse-js@1.0.12/+esm';
 
-  <main id="pub-container">
-    <!-- JS will inject grouped entries here -->
-  </main>
+    async function loadPublications() {
+      const response = await fetch('publications.bib');
+      const bibtexText = await response.text();
+      const entries = bibtexParse.toJSON(bibtexText);
 
-  <footer>
-    &copy; 2025 Cyrille Kenne. All rights reserved.
-  </footer>
+      const container = document.getElementById('publications-container');
+      const byYear = {};
 
-  <script>
-    // fetch & parse BibTeX, then render
-    fetch('publications.bib')
-      .then(res => res.text())
-      .then(txt => {
-        const entries = bibtexParse.toJSON(txt)
-          .map(e => {
-            // year is in e.entryTags.year
-            return {
-              year: e.entryTags.year,
-              title: e.entryTags.title.replace(/[{}]/g,''),
-              journal: e.entryTags.journal || e.entryTags.booktitle || '',
-              volume: e.entryTags.volume||'',
-              pages: e.entryTags.pages||'',
-              url: e.entryTags.doi
-                    ? 'https://doi.org/' + e.entryTags.doi
-                    : e.entryTags.url || '',
-              authors: e.entryTags.author,
-              extra: e.entryTags.eprint
-                    ? { label: 'arXiv', url: 'https://doi.org/' + e.entryTags.eprint }
-                    : (e.entryTags.hal
-                       ? { label: 'HAL', url: e.entryTags.hal }
-                       : null)
-            };
-          })
-          .sort((a,b) => b.year - a.year);
-
-        // group by year
-        const byYear = {};
-        entries.forEach(pub => {
-          byYear[pub.year] = byYear[pub.year]||[];
-          byYear[pub.year].push(pub);
-        });
-
-        const container = document.getElementById('pub-container');
-        Object.keys(byYear).sort((a,b)=>b-a).forEach(year=>{
-          const h2 = document.createElement('h2');
-          h2.textContent = year; container.appendChild(h2);
-
-          const ul = document.createElement('ul');
-          byYear[year].forEach(pub => {
-            const li = document.createElement('li');
-            const a = document.createElement('a');
-            a.href = pub.url; a.textContent = pub.title;
-            a.target = '_blank'; a.className = 'pub-link';
-            li.appendChild(a);
-
-            let meta = `, ${pub.journal}`;
-            if (pub.volume) meta += `, ${pub.volume}`;
-            if (pub.pages)  meta += `, pp. ${pub.pages}`;
-            li.append(meta + `. (${year}). `);
-
-            if (pub.authors) {
-              li.append(`(With ${pub.authors.replace(/ and /g, ', ')}).`);
-            }
-
-            if (pub.extra) {
-              const e = document.createElement('a');
-              e.href = pub.extra.url;
-              e.textContent = `[${pub.extra.label}]`;
-              e.target = '_blank';
-              e.className = 'extra';
-              li.appendChild(e);
-            }
-
-            ul.appendChild(li);
-          });
-          container.appendChild(ul);
-        });
-      })
-      .catch(err => {
-        document.getElementById('pub-container').textContent = 'Failed to load publications.';
-        console.error(err);
+      entries.forEach(entry => {
+        const year = entry.entryTags.year || 'Unknown';
+        if (!byYear[year]) byYear[year] = [];
+        byYear[year].push(entry);
       });
-  </script>
 
+      const sortedYears = Object.keys(byYear).sort((a, b) => b - a);
+      sortedYears.forEach(year => {
+        const h3 = document.createElement('h3');
+        h3.textContent = year;
+        h3.className = 'year';
+        container.appendChild(h3);
+
+        const ul = document.createElement('ul');
+        byYear[year].forEach(entry => {
+          const li = document.createElement('li');
+          const authors = entry.entryTags.author;
+          const title = entry.entryTags.title;
+          const journal = entry.entryTags.journal || entry.entryTags.booktitle;
+          const doi = entry.entryTags.doi ? `<a href="https://doi.org/${entry.entryTags.doi}" target="_blank">${title}</a>` : title;
+          const note = entry.entryTags.note ? ` (${entry.entryTags.note})` : '';
+
+          li.innerHTML = `${doi}, <i>${journal}</i> (${year}). ${authors}${note}`;
+          ul.appendChild(li);
+        });
+
+        container.appendChild(ul);
+      });
+    }
+
+    loadPublications();
+  </script>
 </body>
 </html>
