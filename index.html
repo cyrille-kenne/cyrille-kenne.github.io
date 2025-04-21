@@ -1,117 +1,151 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Cyrille Kenne - Assistant Professor, University of British Columbia">
-    <meta name="keywords" content="Cyrille Kenne, Stève Cyrille Kenne, Steve Kenne, Mathematics, Optimal control, Mathematical Biology, UBC">
-    <meta name="google-site-verification" content="qxJBKdjS8c-iT-WdrcCZqtKLQv0vx3Omn1OpzAeTxrI" />
-    <meta name="robots" content="index, follow">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Cyrille Kenne - Assistant Professor, University of British Columbia" />
+    <meta name="keywords" content="Cyrille Kenne, Steve Cyrille Kenne, Mathematics, Optimal control, Mathematical Biology, UBC" />
+    <meta name="robots" content="index, follow" />
     <title>Cyrille Kenne</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
             margin: 0;
             padding: 0;
             background-color: #f4f4f4;
+            color: #333;
         }
+
         header {
             background-color: #333;
-            color: #fff;
+            color: white;
             padding: 20px;
-            text-align: left;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
         }
+
         header h1 {
-            margin: 0;
             font-size: 2.5em;
+            margin: 0;
         }
-        nav {
-            text-align: right;
-        }
+
         nav a {
             color: white;
             margin: 0 15px;
             text-decoration: none;
-            font-size: 1.2em;
+            font-size: 1.1em;
         }
+
         nav a:hover {
             color: #00b894;
         }
+
         .main-content {
             display: flex;
             flex-wrap: wrap;
-            justify-content: space-between;
-            max-width: 900px;
+            max-width: 1000px;
             margin: 40px auto;
             padding: 20px;
-            text-align: justify;
-            background-color: white;
+            background: white;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
+
         .photo {
             flex: 1;
-            min-width: 300px; /* Adjust as needed */
-            position: relative;
+            min-width: 280px;
+            max-width: 350px;
+            margin-right: 20px;
+            border-radius: 8px;
             overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
+
         .photo img {
             width: 100%;
-            height: 100%;
+            height: auto;
             object-fit: cover;
         }
+
         .bio {
             flex: 2;
-            margin-left: 20px;
         }
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
+
+        .bio p {
+            margin-bottom: 1.2em;
         }
+
+        h2 {
+            color: #222;
+            border-bottom: 2px solid #00b894;
+            padding-bottom: 5px;
+        }
+
+        a {
+            color: #0077cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+            color: #005fa3;
+        }
+
         #contact {
-            padding-left: 40px; 
+            max-width: 900px;
+            margin: 30px auto;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.05);
         }
+
         footer {
             background-color: #333;
             color: white;
             text-align: center;
-            padding: 4px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-             position: relative;
+            padding: 10px;
         }
 
-        /* Media Queries for Responsive Design */
+        .social-links a {
+            color: #fff;
+            margin: 0 10px;
+        }
+
         @media (max-width: 768px) {
             header {
                 flex-direction: column;
                 text-align: center;
             }
+
             nav {
                 margin-top: 10px;
             }
+
             nav a {
                 display: block;
                 margin: 5px 0;
             }
+
             .main-content {
                 flex-direction: column;
-                margin: 20px;
                 padding: 10px;
             }
+
             .photo {
                 margin: 0 auto 20px;
-                max-width: 100%;
+            }
+
+            .bio {
+                margin-left: 0;
             }
         }
     </style>
 </head>
 <body>
+
     <header>
         <h1>Cyrille Kenne</h1>
         <nav>
@@ -124,30 +158,40 @@
     </header>
 
     <section class="main-content">
-       
+        <div class="photo">
+            <img src="images/cyrille.jpg" alt="Photo of Cyrille Kenne">
+        </div>
         <div class="bio">
-            <p>I am currently an Assistant Professor in the <a href="https://www.math.ubc.ca" target="_blank"> Mathematics Department </a> at the University of British Columbia. I am also a faculty member at the <a href="https://www.iam.ubc.ca" target="_blank">Institute of Applied Mathematics at UBC </a>. I received my PhD in mathematics from Université des Antilles in 2022. From 2022 to 2024, I worked as an Attaché Temporaire d'Enseignement et de Recherche (ATER) at IUT de la Martinique.</p>
-            <p>My research focuses on the multiscale modelling of infectious diseases, mathematical biology and control theory applied to local and nonlocal PDEs inspired by biology. I am particularly interested in understanding the dynamics of pathogen-host systems and developing comprehensive models to analyze disease progression and control strategies. My interests also include the formulation and solving of nonlinear control problems with a deep analysis, as well as optimal control applied to fisheries management.</p>
-            <p> If you are interested in pursuing a PhD or Master's degree at UBC in these areas, I encourage you to <a href="https://www.math.ubc.ca/graduate/prospective-students/admissions" target="_blank">apply</a> and contact me with your CV, your research interests, and a brief description of why these fields interest you. </p>
+            <p>I am currently an Assistant Professor in the <a href="https://www.math.ubc.ca" target="_blank">Mathematics Department</a> at the University of British Columbia and a faculty member at the <a href="https://www.iam.ubc.ca" target="_blank">Institute of Applied Mathematics</a>.</p>
+
+            <p>I earned my PhD in Mathematics from Université des Antilles in 2022. Between 2022 and 2024, I served as an Attaché Temporaire d'Enseignement et de Recherche (ATER) at IUT de la Martinique.</p>
+
+            <p>My research focuses on multiscale modeling of infectious diseases, mathematical biology, and control theory, especially related to PDEs inspired by biological systems. I'm also interested in nonlinear control problems and optimal control applications such as fisheries management.</p>
+
+            <p>Prospective Master's or PhD students interested in these areas are encouraged to <a href="https://www.math.ubc.ca/graduate/prospective-students/admissions" target="_blank">apply</a> and contact me with your CV and research interests.</p>
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact Information</h2>
-        <p>Email: <a>kenne at math dot ubc dot ca</a></p>
-        <p>Department of Mathematics,  University of British Columbia<br>
-        Website: <a href="https://www.math.ubc.ca" target="_blank">https://www.math.ubc.ca</a> <br>
-          1984 Mathematics Road <br>
-          Vancouver, BC Canada V6T 1Z2<br>
-        </p> 
+        <p>Email: <a href="mailto:kenne@math.ubc.ca">kenne at math dot ubc dot ca</a></p>
+        <p>
+            Department of Mathematics, University of British Columbia<br>
+            1984 Mathematics Road<br>
+            Vancouver, BC, Canada V6T 1Z2<br>
+            Website: <a href="https://www.math.ubc.ca" target="_blank">www.math.ubc.ca</a>
+        </p>
     </section>
 
-    <footer>
-    <div class="social-links">
-    <a href="https://www.researchgate.net/profile/Cyrille-Kenne" target="_blank" style="margin-right: 10px;">ResearchGate</a>
-    <a href="https://scholar.google.com/citations?user=yourprofile" target="_blank">Google Scholar</a>
-    </div>
-        <p> &copy; 2025 Cyrille Kenne. All rights reserved.</p>
-    </footer>
+    <!-- Footer will be loaded dynamically -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+        fetch("footer.html")
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById("footer-placeholder").innerHTML = data;
+            });
+    </script>
 </body>
 </html>
