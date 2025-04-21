@@ -1,154 +1,136 @@
-sit<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teachings</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
-            text-align: left;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        nav {
-            text-align: right;
-        }
-        nav a {
-            color: white;
-            margin: 0 15px;
-            text-decoration: none;
-            font-size: 1.2em;
-        }
-        nav a:hover {
-            color: #00b894;
-        }
-        .main-content {
-            max-width: 900px;
-            margin: 40px auto;
-            padding: 20px;
-            background-color: white;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
-        }
-        .institution {
-            margin-bottom: 30px;
-        }
-        .institution-title {
-            font-size: 1.8em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        .year-list {
-            margin-left: 20px;
-        }
-        .year {
-            font-size: 1.5em;
-            color: #555;
-            margin-top: 10px;
-        }
-        .course-list {
-            margin-left: 40px;
-        }
-        .course-item {
-            font-size: 1.2em;
-            color: #777;
-            margin-top: 5px;
-        }
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-            position: relative;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teachings</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+      color: #2c3e50;
+    }
+    header {
+      background-color: #1e272e;
+      color: #fff;
+      padding: 20px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2.2rem;
+    }
+    nav a {
+      color: #fff;
+      margin-left: 20px;
+      text-decoration: none;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #00cec9;
+    }
+    .main-content {
+      width: clamp(300px, 90vw, 1200px);
+      margin: 40px auto;
+      padding: clamp(1rem, 2vw, 2rem);
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+    .institution {
+      margin-bottom: 40px;
+    }
+    .institution-title {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #2c3e50;
+      border-bottom: 1px solid #ccc;
+      margin-bottom: 10px;
+      padding-bottom: 5px;
+    }
+    .level {
+      font-size: 1.4rem;
+      font-weight: 600;
+      margin-top: 20px;
+      color: #34495e;
+    }
+    .course-list {
+      margin-left: 20px;
+      list-style: square;
+    }
+    .course-list li {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 6px;
+    }
+    footer {
+      background-color: #1e272e;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      margin-top: 60px;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Teachings</h1>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="publications.html">Publications</a>
-            <a href="teachings.html">Teachings</a>
-            <a href="researchop.html">Research Opportunities</a>
-            <a href="administration.html">Administration</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Teachings</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="publications.html">Publications</a>
+      <a href="teachings.html">Teachings</a>
+      <a href="researchop.html">Research Opportunities</a>
+      <a href="administration.html">Administration</a>
+    </nav>
+  </header>
 
-    <section class="main-content">
-       
-<div class="institution">
-<div class="institution-title">Université des Antilles</div>
-<ul>
-    <li><strong>Undergraduate</strong>
-        <ul>
-            <li>Probability and Statistics</li>
-            <li>Analysis I and II</li>
-            <li>Scientific Calculus</li>
-            <li>Geometry</li>
-            <li>Bio-mathematics</li>
-            <li>Decision Support Systems</li>
-            <li>Graph Theory</li>
-            <li>Introduction to Databases</li>
-            <li>Introduction to Computer Architecture</li>
-            <li>Differential Calculus</li>
-            <li>Cryptography and Security</li>
-            <li>Automata Theory</li>
-        </ul>
-    </li>
-</ul>
-</div>
-</div>
+  <section class="main-content">
+    <div class="institution">
+      <div class="institution-title">Université des Antilles</div>
+      <div class="level">Undergraduate</div>
+      <ul class="course-list">
+        <li>Probability and Statistics</li>
+        <li>Analysis I and II</li>
+        <li>Scientific Calculus</li>
+        <li>Geometry</li>
+        <li>Bio-mathematics</li>
+        <li>Decision Support Systems</li>
+        <li>Graph Theory</li>
+        <li>Introduction to Databases</li>
+        <li>Introduction to Computer Architecture</li>
+        <li>Differential Calculus</li>
+        <li>Cryptography and Security</li>
+        <li>Automata Theory</li>
+      </ul>
+    </div>
 
+    <div class="institution">
+      <div class="institution-title">Higher Teacher Training College (HTTC) of Bertoua</div>
+      <div class="level">Undergraduate</div>
+      <ul class="course-list">
+        <li>Probability and Statistics</li>
+        <li>Analysis I and II</li>
+        <li>Algebra I and II</li>
+        <li>Geometry</li>
+        <li>Metric Spaces and General Topology</li>
+      </ul>
+      <div class="level">Graduate</div>
+      <ul class="course-list">
+        <li>Statistics</li>
+        <li>Geometry</li>
+        <li>Number Theory</li>
+        <li>Advanced Calculus</li>
+        <li>General Topology</li>
+      </ul>
+    </div>
+  </section>
 
-
-        
-        
-
-        <div class="institution">
-            <div class="institution-title">Higher Teacher Training College (HTTC) of Bertoua</div>
-            <ul>
-    <li><strong>Undergraduate</strong>
-        <ul>
-            <li>Probability and Statistics</li>
-            <li>Analysis I and II</li>
-            <li>Algebra I and II</li>
-            <li>Geometry</li>
-            <li>Metric Spaces and General Topology</li>
-        </ul>
-    </li>
-    <li><strong>Graduate</strong>
-        <ul>
-            <li>Statistics</li>
-            <li>Geometry</li>
-            <li>Number Theory</li>
-            <li>Advanced Calculus</li>
-            <li>General Topology</li>
-        </ul>
-    </li>
-</ul>
-        </div>
-
-    </section>
-
-    <footer>
-        <p>&copy; 2025 Cyrille Kenne. All rights reserved.</p>
-    </footer>
+  <footer>
+    <p>&copy; 2025 Cyrille Kenne. All rights reserved.</p>
+  </footer>
 </body>
 </html>
