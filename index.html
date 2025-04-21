@@ -197,8 +197,7 @@
     </p>
   </section>
 
-  <!-- Footer placeholder -->
-  <div id="footer-placeholder"></div>
+ <div id="footer-placeholder"></div>
 
   <script>
     fetch("footer.html")
@@ -206,7 +205,14 @@
       .then(data => {
         document.getElementById("footer-placeholder").innerHTML = data;
       });
+
+    function toggleDarkMode() {
+      const html = document.documentElement;
+      const current = html.getAttribute("data-theme");
+      html.setAttribute("data-theme", current === "light" ? "dark" : "light");
+    }
   </script>
+
 
 </body>
 </html>
